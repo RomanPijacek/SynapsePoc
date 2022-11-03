@@ -7,10 +7,10 @@ import adal
 def authenticate_device_code():
 
     authority_host_uri = 'https://login.microsoftonline.com'
-    tenant = '45597f60-6e37-4be7-acfb-4c9e23b261ea' #SwissReTenantID
+    tenant = 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' #TenantID
     authority_uri = authority_host_uri + '/' + tenant
     resource_uri = 'https://database.windows.net/'
-    client_id = '04b07795-8ddb-461a-bbee-02f9e1bf7b46' # Global Client ID
+    client_id = 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' # Global Client ID
 
     context = adal.AuthenticationContext(authority_uri, api_version=None)
     code = context.acquire_user_code(resource_uri, client_id)
@@ -29,7 +29,7 @@ print('token_details = ', credentials.token)
 
 token_bytes = token.encode('utf-16-le')
 token_struct = struct.pack(f'<I{len(token_bytes)}s', len(token_bytes), token_bytes)
-connection_string = 'driver=ODBC Driver 17 for SQL Server;server=synapsewsatelierdev-ondemand.sql.azuresynapse.net;database=master'
+connection_string = 'driver=ODBC Driver 17 for SQL Server;server=synapsedev-ondemand.sql.azuresynapse.net;database=master'
 
 SQL_COPT_SS_ACCESS_TOKEN = 1256  # This connection option is defined by microsoft in msodbcsql.h
 
@@ -52,17 +52,17 @@ import adal
 import pyodbc
 import struct
 
-connection_string = 'driver=ODBC Driver 17 for SQL Server;server=synapsewsatelierdev-ondemand.sql.azuresynapse.net;database=master'
+connection_string = 'driver=ODBC Driver 17 for SQL Server;server=synapsedev-ondemand.sql.azuresynapse.net;database=master'
 SQL_COPT_SS_ACCESS_TOKEN = 1256  # This connection option is defined by microsoft in msodbcsql.h
 dateTimeObj = datetime.now()
 
 def authenticate_device_code():
 
     authority_host_uri = 'https://login.microsoftonline.com'
-    tenant = '45597f60-6e37-4be7-acfb-4c9e23b261ea'
+    tenant = 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
     authority_uri = authority_host_uri + '/' + tenant
     resource_uri = 'https://management.core.windows.net/'
-    client_id = '04b07795-8ddb-461a-bbee-02f9e1bf7b46'
+    client_id = 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 
     context = adal.AuthenticationContext(authority_uri, api_version=None)
     code = context.acquire_user_code(resource_uri, client_id)
